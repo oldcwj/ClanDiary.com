@@ -1,0 +1,6 @@
+@(item: models.Item)
+@layout {
+    <h2>Item details</h2>
+    <p><strong>@item.name</strong>: @(f"${item.price}%.2f")&nbsp;¥  @routes.Items.serve(item.imageUrl)</p>
+    <img src="@routes.Items.serve(item.imageUrl)" alt="@item.imageUrl" style="width:400px;height:400px;" />
+}
