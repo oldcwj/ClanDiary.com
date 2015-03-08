@@ -20,10 +20,10 @@ public class Item extends Model{
     @Required
     public String name;
     
-    //@Required
+    @Required
     public Double price;
     
-    //@Required
+    @Required
     public String imageUrl;
     
     public static Finder<Long, Item> find = new Finder<Long, Item>(Long.class, Item.class);
