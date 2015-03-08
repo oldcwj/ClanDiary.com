@@ -16,7 +16,7 @@ import play.mvc.Result;
 import utils.FileUtil;
 
 public class ItemController extends Controller{
-    public static final String ROOT_IMAGE_PATH = "~/Play/ClanDiary/imageCache/";
+    public static final String ROOT_IMAGE_PATH = "../imageCache/";
     
     public static Result list() {
         return ok(views.html.list.render(Item.find.all()));
