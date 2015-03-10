@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import play.db.ebean.Model;
-import play.db.ebean.Model.Finder;
 
 @Entity
 @Table(name="items")
@@ -23,7 +22,8 @@ public class Item extends Model{
     @Required
     public Double price;
     
-    @Required
+    public String description;
+    
     public String imageUrl;
     
     public static Finder<Long, Item> find = new Finder<Long, Item>(Long.class, Item.class);

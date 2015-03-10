@@ -1,10 +1,69 @@
-@(items: java.util.Collection[models.Item])
-@layout {
-    <h2>Items list</h2>
-    <ul>
-    @for(item <- items) {
-        <li><a href="@routes.Items.details(item.id)">@item.name</a></li>
-    }
-    </ul>
-    <a href="@routes.Items.createForm()" class="btn btn-primary">创建</a>
+@(items: List[models.Item])
+@home {
+    <!-- Start Page Content -->
+   <section id="main-timeline">
+      <div class="container">
+         <div id="tline-content">
+            <div class="tline-topdate"> May 2014</div>
+            @for(i <- 0 until items.length) {
+               @if(i % 2 == 0) {
+                  <article  class="tline-box ">
+                    <span class="tline-row-l"></span>
+                    <div class="tline-author-box">
+                       <img src="@routes.Assets.at("public/images/avatar3.jpg")" alt=""/>		
+                       <h6 class="tline-author">
+                          <a href="@routes.ItemController.details(items(i).id)">@items(i).name</a>	
+                       </h6>
+                       <h6 class="tline-date">Posted at: 28 May 2014 </h6>
+                    </div>
+                    <img src="@routes.ItemController.serve(items(i).imageUrl)" alt="@items(i).imageUrl" /></br>
+                    <div class="tline-ecxt">
+                       <h6 class="blog-cat-tline"> <a href="#" title="View all posts in Business" rel="category tag">Business</a>- <a href="#" title="View all posts in News" rel="category tag">News</a></h6>
+                       <h4><a href="blog-single.html">Applying behavioural science to a Design</a></h4>
+                    </div>
+                    <p>
+                      Extent is a responsive WordPress theme suitable for multipurpose websites such as a business website 		  
+                    </p>
+                    <div class="blog-com-sp"> <a href="blog-single.html#respond" title="Comment on Applying behavioural science to a Design">No Comments &#187;</a></div>
+                  </article> <!-- end tline-box -->
+              } else {
+                  <article  class="tline-box rgtline">
+                     <span class="tline-row-r"></span>
+                     <div class="tline-author-box">
+                        <img src="@routes.Assets.at("public/images/avatar3.jpg")" alt=""/>		
+                        <h6 class="tline-author">
+                        	<a href="@routes.ItemController.details(items(i).id)">@items(i).name</a>		
+                        </h6>
+                        <h6 class="tline-date">Posted at: 27 May 2014 </h6>
+                     </div>
+                     <img src="@routes.ItemController.serve(items(i).imageUrl)" alt="@items(i).imageUrl" /> <br>
+                     <div class="tline-ecxt">
+                     <h6 class="blog-cat-tline"> <a href="#" title="View all posts in Company" rel="category tag">Company</a>- <a href="#" title="View all posts in News" rel="category tag">News</a></h6>
+                     <h4><a href="blog-single.html">Recalling sweet memories from bridge</a></h4>
+                     </div>
+                     <p>
+                        Extent is a responsive WordPress theme suitable for multipurpose websites such as a business website or an agency website. 		  
+                     </p>
+                     <div class="blog-com-sp"> <a href="blog-single.html" title="Comment on Recalling sweet memories from bridge">2 Comments &#187;</a></div>
+                  </article> <!-- end tline-box -->      
+               }
+            
+            }
+            
+            <div class="tline-topdate"> April 2014</div>
+            
+            <div class="tline-topdate"> March 2014</div>
+            
+            <hr class="vertical-space1">
+            <div class="tline-topdate enddte"> March 2014</div>
+         </div> <!-- end-pin-content -->
+         <hr class="vertical-space2">
+      </div>
+      <section class="container aligncenter">
+         <div class='wp-pagenavi'>
+            <span class='pages'>Page 1 of 7</span><span class='current'>1</span><a href='#' class='page larger'>2</a><a href='#' class='page larger'>3</a><a href='#' class='page larger'>4</a><a href='#' class='page larger'>5</a><span class='extend'>...</span><a href='#' class='nextpostslink'>&raquo;</a><a href='#' class='last'>Last &raquo;</a>
+         </div> <!-- end wp-pagenavi -->
+         <hr class="vertical-space2">
+      </section> <!-- end-container -->
+   </section> <!-- end main-timeline -->
 }

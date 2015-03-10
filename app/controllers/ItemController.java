@@ -2,6 +2,9 @@ package controllers;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.qiniu.api.auth.digest.Mac;
+import com.qiniu.api.rs.GetPolicy;
+import com.qiniu.api.rs.URLUtils;
 
 import java.io.File;
 
@@ -13,10 +16,15 @@ import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import utils.Constant;
 import utils.FileUtil;
 
 public class ItemController extends Controller{
     public static final String ROOT_IMAGE_PATH = "../imageCache/";
+    
+    public static Result about() {
+        return ok(views.html.about.render());
+    }
     
     public static Result list() {
         return ok(views.html.list.render(Item.find.all()));
@@ -36,9 +44,13 @@ public class ItemController extends Controller{
             if (!newFile.exists()) {
                 newFile.mkdirs();
             }
-            newFile = new File(newFile.getAbsolutePath() + "/" + picture.getFilename());
+            
+            String imageNameString = Integer.toHexString(picture.getFilename().hashCode());
+            newFile = new File(newFile.getAbsolutePath() + "/" + imageNameString);
             FileUtil.copyFile(imageFile, newFile);
+            // FileUtil.uploadFile(imageNameString);
             Item createItem = submission.get();
+            createItem.imageUrl = imageNameString;
             createItem.save();
             if (createItem != null) {
                 return redirect(routes.ItemController.details(createItem.id));
@@ -52,6 +64,16 @@ public class ItemController extends Controller{
         Item item = Item.find.byId(id);
         if (item != null) {
             // return ok(Json.toJson(item));
+            Mac mac = new Mac(Constant.ACCESS_KEY, Constant.SECRET_KEY);
+            String baseUrl;
+            try {
+                baseUrl = URLUtils.makeBaseUrl("", "");
+                GetPolicy getPolicy = new GetPolicy();
+                String downloadUrl = getPolicy.makeRequest(baseUrl, mac);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
             return ok(views.html.details.render(item));
         } else {
             return notFound();

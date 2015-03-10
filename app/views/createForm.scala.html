@@ -1,11 +1,13 @@
 @(form: Form[Item])
-@layout {
-    <h2>Add an item</h2>
+@home {
+	<section class="container page-content" >
+    <h2>上传照片</h2>
  
  	@helper.form(action = routes.ItemController.create, 'enctype -> "multipart/form-data") {
     	@helper.inputText(form("name"), '_label -> "Name")
         @helper.inputText(form("price"), '_label -> "Price")
     	<input type="file" name="imageUrl">
-    	<button class="btn btn-primary">创建</button>
+    	<button class="btn btn-primary">上传</button>
 	}
+	</section>
 }
