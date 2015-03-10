@@ -1,0 +1,11 @@
+@(form: Form[Account])
+@layout {
+    <h2>登录</h2>
+ 
+ 	@helper.form(action = routes.AccountController.isLoginSuccess, 'enctype -> "multipart/form-data") {
+    	@helper.inputText(form("userName"), '_label -> "姓名")
+        @helper.inputText(form("password"), '_label -> "密码")
+    	<button class="btn btn-primary">登录</button>
+	}
+}
+

@@ -2,19 +2,18 @@ package models;
 
 import java.util.Date;
 
-import play.data.validation.Constraints.Required;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import play.data.format.Formats;
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
-import play.data.format.*;
 
 @Entity
-@Table(name="items")
-public class Item extends Model{
+@Table(name="account")
+public class Account extends Model{
     @Id
     @GeneratedValue
     public Long id;
@@ -22,12 +21,13 @@ public class Item extends Model{
     @Required
     public String userName;
     
-    public String description;
+    @Required
+    public String password;
     
-    public String imageUrl;
+    public int type;
     
     @Formats.DateTime(pattern="yyyy-MM-dd hh:mm")
-    public Date date = new Date();
+    public Date createDate;  //创建账户时间
     
-    public static Finder<Long, Item> find = new Finder<Long, Item>(Long.class, Item.class);
+    public static Finder<Long, Account> find = new Finder<Long, Account>(Long.class, Account.class);
 }

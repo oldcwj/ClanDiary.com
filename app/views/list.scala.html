@@ -12,17 +12,13 @@
                     <div class="tline-author-box">
                        <img src="@routes.Assets.at("public/images/avatar3.jpg")" alt=""/>		
                        <h6 class="tline-author">
-                          <a href="@routes.ItemController.details(items(i).id)">@items(i).name</a>	
+                          <a href="@routes.ItemController.details(items(i).id)">@items(i).userName</a>	
                        </h6>
-                       <h6 class="tline-date">Posted at: 28 May 2014 </h6>
+                       <h6 class="tline-date">@items(i).date </h6>
                     </div>
                     <img src="@routes.ItemController.serve(items(i).imageUrl)" alt="@items(i).imageUrl" /></br>
-                    <div class="tline-ecxt">
-                       <h6 class="blog-cat-tline"> <a href="#" title="View all posts in Business" rel="category tag">Business</a>- <a href="#" title="View all posts in News" rel="category tag">News</a></h6>
-                       <h4><a href="blog-single.html">Applying behavioural science to a Design</a></h4>
-                    </div>
                     <p>
-                      Extent is a responsive WordPress theme suitable for multipurpose websites such as a business website 		  
+                        @items(i).description 		  
                     </p>
                     <div class="blog-com-sp"> <a href="blog-single.html#respond" title="Comment on Applying behavioural science to a Design">No Comments &#187;</a></div>
                   </article> <!-- end tline-box -->
@@ -32,9 +28,9 @@
                      <div class="tline-author-box">
                         <img src="@routes.Assets.at("public/images/avatar3.jpg")" alt=""/>		
                         <h6 class="tline-author">
-                        	<a href="@routes.ItemController.details(items(i).id)">@items(i).name</a>		
+                        	<a href="@routes.ItemController.details(items(i).id)">@items(i).userName</a>		
                         </h6>
-                        <h6 class="tline-date">Posted at: 27 May 2014 </h6>
+                        <h6 class="tline-date">@items(i).date</h6>
                      </div>
                      <img src="@routes.ItemController.serve(items(i).imageUrl)" alt="@items(i).imageUrl" /> <br>
                      <div class="tline-ecxt">
@@ -42,7 +38,7 @@
                      <h4><a href="blog-single.html">Recalling sweet memories from bridge</a></h4>
                      </div>
                      <p>
-                        Extent is a responsive WordPress theme suitable for multipurpose websites such as a business website or an agency website. 		  
+                        @items(i).description 		  
                      </p>
                      <div class="blog-com-sp"> <a href="blog-single.html" title="Comment on Recalling sweet memories from bridge">2 Comments &#187;</a></div>
                   </article> <!-- end tline-box -->      

@@ -1,9 +1,8 @@
-import models.Item;
+import models.Account;
 import play.*;
 import play.mvc.*;
 import play.mvc.Http.*;
 import play.libs.F.*;
-
 import static play.mvc.Results.*;
 
 public class Global extends GlobalSettings {
@@ -11,8 +10,10 @@ public class Global extends GlobalSettings {
     @Override
     public void onStart(Application app) {
         super.onStart(app);
-        if (Item.find.all().isEmpty()) {
-        }
+        Account account = new Account();
+        account.userName = "oldcwj";
+        account.password = "666666";
+        account.save();
     }
 
     @Override
