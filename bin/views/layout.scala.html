@@ -16,34 +16,6 @@
     </style>
     </head>
     <body>
-    	<div class="container">
-			<nav class="navbar navbar-default" role="navigation">
-   				<div class="navbar-header">
-      				<a class="navbar-brand" href="/"><strong>家族日记</strong></a>
-   				</div>
-   				<div>
-				<!--向左对齐-->
-				<p class="navbar-text navbar-left">
-      				<a href="@routes.ItemController.list()"><strong>列表</strong></a>
-      			</p>
-      			<p class="navbar-text navbar-left">
-      				<a href="#"><strong>广场</strong></a>
-      			</p>
-      			<!--向右对齐-->
-      			<form class="navbar-form navbar-right" role="search">
-         			<button type="submit" class="btn btn-default">
-            		登录
-         			</button>
-      			</form> 
-      			<p class="navbar-text navbar-right">登录</p>
-   				</div>
-			</nav>
-			<p>
-        	@content
-        </div>
-        <div class="navbar-bottom">
-        	<a >关于</a><h5 class="text-center">ClanDiary.com@@2015</h5>
-        </div>
-        
+        @content        
     </body>
 </html>

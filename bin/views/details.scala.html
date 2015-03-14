@@ -1,10 +1,10 @@
 @(item: models.Item)
 @home {
     <section class="container page-content" >
-    	<h2>Item details</h2>
-    	<p><strong>@item.name</strong>: @(f"${item.price}%.2f")&nbsp;¥  @routes.ItemController.serve(item.imageUrl)</p>
+    	<h2>详情</h2>
+    	<p><strong>@item.userName</strong>:<br> @item.description</p>
     	<img src="@routes.ItemController.serve(item.imageUrl)" alt="@item.imageUrl" style="width:400px;height:400px;" />
-    	<h3><strong>@item.name</strong></h3>
+    	<h3><strong>@item.userName</strong></h3>
     	</br>
     	<h2> </h2>
     </section>

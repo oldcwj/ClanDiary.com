@@ -13,12 +13,14 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
+import play.mvc.Security;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import utils.Constant;
 import utils.FileUtil;
 
+@Security.Authenticated(Secured.class)
 public class ItemController extends Controller{
     public static final String ROOT_IMAGE_PATH = "../imageCache/";
     

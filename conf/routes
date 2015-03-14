@@ -2,8 +2,6 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET		/login						controllers.AccountController.login()
-GET     /isLoginSuccess				controllers.AccountController.isLoginSuccess()
 
 # Home page
 GET     /                           controllers.ItemController.list
@@ -12,13 +10,18 @@ GET     /                           controllers.ItemController.list
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 GET    /items/add     				controllers.ItemController.createForm
-
 GET    /items  						controllers.ItemController.list
 POST   /items						controllers.ItemController.create
 GET    /items/:id					controllers.ItemController.details(id:Long)
 PUT	   /items/:id					controllers.ItemController.update(id:Long)
 DELETE /items/:id					controllers.ItemController.delete(id:Long)
-
 GET    /files/*filepath             controllers.ItemController.serve(filepath : String)
-
 GET    /about						controllers.ItemController.about
+
+GET     /admin		                controllers.Admin.index()
+POST	/user						controllers.Admin.addUser()
+GET		/users						controllers.Admin.getUsers()
+
+POST	/login						controllers.Application.authenticate()
+GET 	/index						controllers.Application.index()
+GET		/logout						controllers.Application.logout()

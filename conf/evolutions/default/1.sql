@@ -3,15 +3,6 @@
 
 # --- !Ups
 
-create table account (
-  id                        bigint not null,
-  user_name                 varchar(255),
-  password                  varchar(255),
-  type                      integer,
-  create_date               timestamp,
-  constraint pk_account primary key (id))
-;
-
 create table items (
   id                        bigint not null,
   user_name                 varchar(255),
@@ -21,9 +12,16 @@ create table items (
   constraint pk_items primary key (id))
 ;
 
-create sequence account_seq;
+create table user (
+  email                     varchar(255) not null,
+  name                      varchar(255),
+  password                  varchar(255),
+  constraint pk_user primary key (email))
+;
 
 create sequence items_seq;
+
+create sequence user_seq;
 
 
 
@@ -32,13 +30,13 @@ create sequence items_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists account;
-
 drop table if exists items;
+
+drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists account_seq;
-
 drop sequence if exists items_seq;
+
+drop sequence if exists user_seq;
 

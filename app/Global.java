@@ -1,4 +1,4 @@
-import models.Account;
+import models.User;
 import play.*;
 import play.mvc.*;
 import play.mvc.Http.*;
@@ -10,10 +10,13 @@ public class Global extends GlobalSettings {
     @Override
     public void onStart(Application app) {
         super.onStart(app);
-        Account account = new Account();
-        account.userName = "oldcwj";
-        account.password = "666666";
-        account.save();
+        if (User.finder.all().size() == 0) {
+            User user = new User();
+            user.name = "oldcwj";
+            user.password = "666666";
+            user.email = "oldcwj@gmail.com";
+            user.save();
+        }
     }
 
     @Override

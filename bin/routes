@@ -2,6 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+
 # Home page
 GET     /                           controllers.ItemController.list
 
@@ -19,3 +20,11 @@ DELETE /items/:id					controllers.ItemController.delete(id:Long)
 GET    /files/*filepath             controllers.ItemController.serve(filepath : String)
 
 GET    /about						controllers.ItemController.about
+
+GET     /admin		                controllers.Admin.index()
+POST	/user						controllers.Admin.addUser()
+GET		/users						controllers.Admin.getUsers()
+
+POST	/login						controllers.Application.authenticate()
+GET 	/index						controllers.Application.index()
+GET		/logout						controllers.Application.logout()
