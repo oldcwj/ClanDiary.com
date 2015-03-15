@@ -23,6 +23,13 @@ public class Application extends Controller {
 		}
 		return ok(login.render(Form.form(Application.Login.class)));
 	}
+	
+	// TODO
+	public static Result getLoginName() {
+	    String email = ctx().session().get("email");
+	    
+	    return ok();
+	}
 
 	public static Result logout() {
 		session().clear();

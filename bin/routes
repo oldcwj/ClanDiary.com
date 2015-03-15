@@ -10,15 +10,12 @@ GET     /                           controllers.ItemController.list
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 GET    /items/add     				controllers.ItemController.createForm
-
 GET    /items  						controllers.ItemController.list
 POST   /items						controllers.ItemController.create
 GET    /items/:id					controllers.ItemController.details(id:Long)
 PUT	   /items/:id					controllers.ItemController.update(id:Long)
 DELETE /items/:id					controllers.ItemController.delete(id:Long)
-
 GET    /files/*filepath             controllers.ItemController.serve(filepath : String)
-
 GET    /about						controllers.ItemController.about
 
 GET     /admin		                controllers.Admin.index()

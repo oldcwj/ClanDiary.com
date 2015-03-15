@@ -1,6 +1,5 @@
 package controllers;
 
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.qiniu.api.auth.digest.Mac;
 import com.qiniu.api.rs.GetPolicy;

@@ -2,20 +2,19 @@
 @home {
 <script type="text/javascript" src="@routes.Assets.at("javascripts/main.js")"></script>
 
-<div class="table-responsiveness">
-	<table class="table">
-		<thead>
-	      <tr>
-	        <th>Email</th>
-	        <th>Name</th>
-	        <th>Password</th>
-	      </tr>
-	    </thead>	    
-	</table>
-</div>
 <div class="jumbotron">
-	<h2>Add New User</h2>
 	<section class="container page-content" >
+		<div class="table-responsiveness">
+			<table class="table">
+				<thead>
+		      		<tr>
+			        	<th>Email</th>
+			        	<th>Name</th>
+			        	<th>Password</th>
+		      		</tr>
+	    		</thead>
+			</table>
+		</div>
     	<h2>创建新用户</h2>
  		@if(form.hasGlobalErrors) {
 			@form.globalError.message
