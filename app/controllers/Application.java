@@ -24,6 +24,23 @@ public class Application extends Controller {
 		return ok(login.render(Form.form(Application.Login.class)));
 	}
 	
+	public static Result signup() {
+	    return ok(signup.render(Form.form(User.class)));
+	}
+	
+    public static Result signupAuth() {
+        Form<User> signupForm = Form.form(User.class).bindFromRequest();
+        if (signupForm.hasErrors()) {
+            return badRequest(signup.render(signupForm));
+        } else {
+            User user = signupForm.get();
+            user.save();
+            session("email", signupForm.get().email);
+            System.out.println("signup");
+            return GO_HOME;
+        }
+    }
+	
 	// TODO
 	public static Result getLoginName() {
 	    String email = ctx().session().get("email");

@@ -6,6 +6,7 @@
 create table items (
   id                        bigint not null,
   user_name                 varchar(255),
+  email                     varchar(255),
   description               varchar(255),
   image_url                 varchar(255),
   date                      timestamp,

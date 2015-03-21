@@ -1,4 +1,4 @@
-@(form: Form[Application.Login])
+@(form: Form[User])
 <head>
 	<!-- Basic Page Needs
    ================================================== -->
@@ -21,16 +21,14 @@
 <body>
 	<section class="container page-content" >
 		<div class="col-xs-6 col-md-offset-3">
-    	<h2>登录</h2>
+    	<h2>注册</h2>
  		@if(form.hasGlobalErrors) {
 			@form.globalError.message
 		}
- 		@helper.form(action = routes.Application.authenticate, 'enctype -> "multipart/form-data") {
+ 		@helper.form(action = routes.Application.signupAuth, 'enctype -> "multipart/form-data") {
     		@helper.inputText(form("email"), '_label -> "Email")
+    		@helper.inputText(form("name"), '_label -> "姓名")
         	@helper.inputPassword(form("password"), '_label -> "密码")
-    		<button class="btn btn-primary">登录</button>
-		}
-		@helper.form(action = routes.Application.signup, 'enctype -> "multipart/form-data") {
     		<button class="btn btn-primary">注册</button>
 		}
 		</div>

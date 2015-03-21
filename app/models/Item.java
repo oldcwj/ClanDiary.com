@@ -22,6 +22,8 @@ public class Item extends Model{
     @Required
     public String userName;
     
+    public String email;
+    
     public String description;
     
     public String imageUrl;

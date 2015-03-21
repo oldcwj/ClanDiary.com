@@ -6,6 +6,7 @@ import com.qiniu.api.rs.GetPolicy;
 import com.qiniu.api.rs.URLUtils;
 
 import java.io.File;
+import java.util.List;
 
 import models.Item;
 import play.data.Form;
@@ -28,7 +29,9 @@ public class ItemController extends Controller{
     }
     
     public static Result list() {
-        return ok(views.html.list.render(Item.find.all()));
+        String email = ctx().session().get("email");
+        List<Item> items = Item.find.where().eq("email", email).findList();
+        return ok(views.html.list.render(items));
     }
     
     // @BodyParser.Of(BodyParser.Json.class)
@@ -50,8 +53,10 @@ public class ItemController extends Controller{
             newFile = new File(newFile.getAbsolutePath() + "/" + imageNameString);
             FileUtil.copyFile(imageFile, newFile);
             // FileUtil.uploadFile(imageNameString);
+            String email = ctx().session().get("email");
             Item createItem = submission.get();
             createItem.imageUrl = imageNameString;
+            createItem.email = email;
             createItem.save();
             if (createItem != null) {
                 return redirect(routes.ItemController.details(createItem.id));
