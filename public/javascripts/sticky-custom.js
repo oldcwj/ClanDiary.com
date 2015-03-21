@@ -10,7 +10,7 @@ jQuery(document).ready(function(){
 	    var $w = jQuery(window);
 	    $w.scroll(function(e) {
 	        var scrollTop = $w.scrollTop();
-	        var shouldBeFixed = scrollTop > 120;
+	        var shouldBeFixed = scrollTop > 45;
 	        if (shouldBeFixed && !isFixed) {
 	            header.addClass('sticky');
 	            isFixed = true;
