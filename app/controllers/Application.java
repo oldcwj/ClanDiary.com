@@ -33,10 +33,14 @@ public class Application extends Controller {
         if (signupForm.hasErrors()) {
             return badRequest(signup.render(signupForm));
         } else {
-            User user = signupForm.get();
-            user.save();
-            session("email", signupForm.get().email);
-            System.out.println("signup");
+            try {
+                User user = signupForm.get();
+                user.save();
+                session("email", user.email);
+                System.out.println("signup");
+            } catch (Exception exception) {
+                return badRequest(signup.render(signupForm));
+            }
             return GO_HOME;
         }
     }

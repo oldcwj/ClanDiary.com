@@ -13,6 +13,7 @@ public class User extends Model{
 	@Id
 	@Constraints.Required
 	@Formats.NonEmpty
+	@Constraints.Email
 	public String email;	
 	
 	@Constraints.Required
@@ -21,6 +22,7 @@ public class User extends Model{
 	
 	@Constraints.Required
 	@Formats.NonEmpty
+	@Constraints.MinLength(6)
 	public String password;
 
 	public static Model.Finder<String, User> finder = new Finder(String.class, User.class);
