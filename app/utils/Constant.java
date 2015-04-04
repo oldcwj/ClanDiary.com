@@ -1,6 +1,6 @@
 package utils;
 
 public class Constant {
-    public static final String ACCESS_KEY = "q7nBZvrMbRdkNzUUnbMQFI9XAXaeSG9UEIVVDTyE";
-    public static final String SECRET_KEY = "mtr4ky-jwiwnl_mmA6jWlbLpUzKWCQ7ggKK26_HD";
+    public static final String ROOT_IMAGE_PATH = "../imageCache/";
+    public static final String ROOT_IMAGE_SMAILL_PATH = "../imageCache/small/";
 }

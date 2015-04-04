@@ -16,7 +16,7 @@
                        </h6>
                        <h6 class="tline-date">@items(i).date </h6>
                     </div>
-                    <img src="@routes.ItemController.serve(items(i).imageUrl)" alt="@items(i).imageUrl" /></br>
+                    <img src="@routes.ItemController.smallImage(items(i).imageUrl)" alt="@items(i).imageUrl" /></br>
                     <p>
                         @items(i).description 		  
                     </p>
@@ -32,7 +32,7 @@
                         </h6>
                         <h6 class="tline-date">@items(i).date</h6>
                      </div>
-                     <img src="@routes.ItemController.serve(items(i).imageUrl)" alt="@items(i).imageUrl" /> <br>
+                     <img src="@routes.ItemController.smallImage(items(i).imageUrl)" alt="@items(i).imageUrl" /> <br>
                      <div class="tline-ecxt">
                      <h6 class="blog-cat-tline"> <a href="#" title="View all posts in Company" rel="category tag">Company</a>- <a href="#" title="View all posts in News" rel="category tag">News</a></h6>
                      <h4><a href="blog-single.html">Recalling sweet memories from bridge</a></h4>

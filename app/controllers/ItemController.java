@@ -14,11 +14,11 @@ import play.mvc.Security;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import utils.Constant;
 import utils.FileUtil;
 
 @Security.Authenticated(Secured.class)
 public class ItemController extends Controller{
-    public static final String ROOT_IMAGE_PATH = "../imageCache/";
     
     public static Result about() {
         return ok(views.html.about.render());
@@ -40,15 +40,10 @@ public class ItemController extends Controller{
             FilePart picture = body.getFile("imageUrl");
             File imageFile = picture.getFile();
             
-            File newFile = new File(ROOT_IMAGE_PATH);//
-            if (!newFile.exists()) {
-                newFile.mkdirs();
-            }
-            
             String imageNameString = Integer.toHexString(picture.getFilename().hashCode());
-            newFile = new File(newFile.getAbsolutePath() + "/" + imageNameString);
-            FileUtil.copyFile(imageFile, newFile);
-            // FileUtil.uploadFile(imageNameString);
+            FileUtil.saveImageToDisk(imageFile, imageNameString);
+            FileUtil.scaleSmallImageToDisk(imageFile, imageNameString); 
+            
             String email = ctx().session().get("email");
             Item createItem = submission.get();
             createItem.imageUrl = imageNameString;
@@ -108,6 +103,10 @@ public class ItemController extends Controller{
     }
     
     public static Result serve(String filepath){
-        return ok(new File(ROOT_IMAGE_PATH + "/" + filepath));
+        return ok(new File(Constant.ROOT_IMAGE_PATH + "/" + filepath));
+    }
+    
+    public static Result smallImage(String filepath){
+        return ok(new File(Constant.ROOT_IMAGE_SMAILL_PATH + "/" + filepath));
     }
 }

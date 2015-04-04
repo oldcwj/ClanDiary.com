@@ -1,8 +1,11 @@
+import java.io.File;
+
 import models.User;
 import play.*;
 import play.mvc.*;
 import play.mvc.Http.*;
 import play.libs.F.*;
+import utils.Constant;
 import static play.mvc.Results.*;
 
 public class Global extends GlobalSettings {
@@ -16,6 +19,16 @@ public class Global extends GlobalSettings {
             user.password = "666666";
             user.email = "oldcwj@gmail.com";
             user.save();
+        }
+        
+        File newFile = new File(Constant.ROOT_IMAGE_PATH);//
+        if (!newFile.exists()) {
+            newFile.mkdirs();
+        }
+        
+        File smallFile = new File(Constant.ROOT_IMAGE_SMAILL_PATH);
+        if (!smallFile.exists()) {
+            smallFile.mkdirs();
         }
     }
 
