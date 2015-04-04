@@ -1,9 +1,6 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.qiniu.api.auth.digest.Mac;
-import com.qiniu.api.rs.GetPolicy;
-import com.qiniu.api.rs.URLUtils;
 
 import java.io.File;
 import java.util.List;
@@ -17,7 +14,6 @@ import play.mvc.Security;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
-import utils.Constant;
 import utils.FileUtil;
 
 @Security.Authenticated(Secured.class)
@@ -70,15 +66,15 @@ public class ItemController extends Controller{
         Item item = Item.find.byId(id);
         if (item != null) {
             // return ok(Json.toJson(item));
-            Mac mac = new Mac(Constant.ACCESS_KEY, Constant.SECRET_KEY);
-            String baseUrl;
-            try {
-                baseUrl = URLUtils.makeBaseUrl("", "");
-                GetPolicy getPolicy = new GetPolicy();
-                String downloadUrl = getPolicy.makeRequest(baseUrl, mac);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            Mac mac = new Mac(Constant.ACCESS_KEY, Constant.SECRET_KEY);
+//            String baseUrl;
+//            try {
+//                baseUrl = URLUtils.makeBaseUrl("", "");
+//                GetPolicy getPolicy = new GetPolicy();
+//                String downloadUrl = getPolicy.makeRequest(baseUrl, mac);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             
             return ok(views.html.details.render(item));
         } else {
