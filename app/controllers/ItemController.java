@@ -49,28 +49,13 @@ public class ItemController extends Controller{
             createItem.imageUrl = imageNameString;
             createItem.email = email;
             createItem.save();
-            if (createItem != null) {
-                return redirect(routes.ItemController.details(createItem.id));
-            } else {
-                return internalServerError();
-            }
+            return redirect(routes.ItemController.details(createItem.id));
         }
     }
     
     public static Result details(Long id) {
         Item item = Item.find.byId(id);
         if (item != null) {
-            // return ok(Json.toJson(item));
-//            Mac mac = new Mac(Constant.ACCESS_KEY, Constant.SECRET_KEY);
-//            String baseUrl;
-//            try {
-//                baseUrl = URLUtils.makeBaseUrl("", "");
-//                GetPolicy getPolicy = new GetPolicy();
-//                String downloadUrl = getPolicy.makeRequest(baseUrl, mac);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-            
             return ok(views.html.details.render(item));
         } else {
             return notFound();
@@ -91,11 +76,7 @@ public class ItemController extends Controller{
             return badRequest();
         }
         updateItem.save();
-        if (updateItem != null) {
-            return ok(Json.toJson(updateItem));
-        } else {
-            return internalServerError();
-        }
+        return ok(Json.toJson(updateItem));
     }
     
     public static Result delete(Long id) {
