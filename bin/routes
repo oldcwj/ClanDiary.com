@@ -16,6 +16,7 @@ GET    /items/:id					controllers.ItemController.details(id:Long)
 PUT	   /items/:id					controllers.ItemController.update(id:Long)
 DELETE /items/:id					controllers.ItemController.delete(id:Long)
 GET    /files/*filepath             controllers.ItemController.serve(filepath : String)
+GET    /smallImage/*filepath        controllers.ItemController.smallImage(filepath : String)
 GET    /about						controllers.ItemController.about
 
 GET     /admin		                controllers.Admin.index()
