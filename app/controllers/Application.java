@@ -10,7 +10,7 @@ import views.html.*;
 public class Application extends Controller {
 
 	public static Result GO_HOME = redirect(routes.ItemController.list());
-
+	
 	public static Result index() {
 		String email = ctx().session().get("email");
 		if (email != null) {
